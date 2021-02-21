@@ -1,0 +1,7 @@
+const ACTIONS = {
+  ADD_USER: 'ADD_USER',
+  DELETE_USER: 'DELETE_USER',
+  ADD_TERCIH: 'ADD_TERCIH',
+  DEL_TERCIH: 'DEL_TERCIH',
+};
+export default ACTIONS;
