@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+import mongoosePaginate from 'mongoose-paginate-v2';
 const SchoolSchema = new mongoose.Schema(
   {
     name: 'String',
@@ -17,5 +17,5 @@ const SchoolSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
+SchoolSchema.plugin(mongoosePaginate);
 export default mongoose.models.School || mongoose.model('School', SchoolSchema);

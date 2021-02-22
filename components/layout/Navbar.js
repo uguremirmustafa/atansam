@@ -6,7 +6,7 @@ function Navbar() {
   const [session, loading] = useSession();
 
   return (
-    <nav className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-6 font-bold">
+    <nav className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-6 font-bold fixed w-full">
       <div className="max-w-4xl mx-auto flex justify-between flex-row ">
         <Link href="/">anasayfa</Link>
         <Link href="/schools">okullar</Link>

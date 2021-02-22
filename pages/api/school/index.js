@@ -16,7 +16,12 @@ export default async function (req, res) {
 }
 const getSchools = async (req, res) => {
   try {
-    const schools = await School.find({});
+    const { page, perPage } = req.query;
+    const options = {
+      page: parseInt(page),
+      limit: parseInt(perPage),
+    };
+    const schools = await School.paginate({}, options);
     res.status(200).json({
       success: true,
       data: schools,
