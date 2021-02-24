@@ -19,7 +19,8 @@ export default function SignIn({ providers }) {
               <button
                 className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full"
                 onClick={() =>
-                  signIn(provider.id, { callbackUrl: 'http://localhost:3000/profile' })
+                  // signIn(provider.id, { callbackUrl: 'http://localhost:3000/profile' })
+                  signIn(provider.id, { callbackUrl: 'https://atansam.vercel.app/profile' })
                 }
               >
                 {provider.name} hesabınla oturum aç
