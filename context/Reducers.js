@@ -14,6 +14,11 @@ const reducers = (state, action) => {
         ...state,
         users: newTercihs,
       };
+    case ACTIONS.SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
 
     default:
       break;

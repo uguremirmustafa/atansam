@@ -3,6 +3,11 @@ import { providers, signIn, useSession } from 'next-auth/client';
 export default function SignIn({ providers }) {
   const [session, loading] = useSession();
   if (loading) return <div>loading</div>;
+  const callbackUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.PRODUCTIONURL
+      : `${process.env.BASE_URL}/profile`;
+
   return (
     <>
       {session ? (
@@ -10,9 +15,14 @@ export default function SignIn({ providers }) {
       ) : (
         <>
           {Object.values(providers).map((provider) => (
-            <div key={provider.name}>
-              <button className="btn p-4" onClick={() => signIn(provider.id)}>
-                Sign in with {provider.name}
+            <div key={provider.name} className="flex flex-col justify-center items-center h-96">
+              <button
+                className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full"
+                onClick={() =>
+                  signIn(provider.id, { callbackUrl: 'http://localhost:3000/profile' })
+                }
+              >
+                {provider.name} hesabınla oturum aç
               </button>
             </div>
           ))}

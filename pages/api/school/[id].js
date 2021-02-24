@@ -1,4 +1,5 @@
 import School from '@models/School';
+import User from '@models/User';
 import dbConnect from '@utils/dbConnect';
 
 dbConnect();
@@ -11,6 +12,9 @@ export default async function (req, res) {
     case 'PUT':
       await updateSchool(req, res);
       break;
+    case 'DELETE':
+      await removeTercih(req, res);
+      break;
 
     default:
       res.status(400).json({ success: false });
@@ -19,7 +23,7 @@ export default async function (req, res) {
 }
 const getSchool = async (req, res) => {
   try {
-    const school = await School.findById(req.query.id);
+    const school = await School.findById(req.query.id).populate('tercihEdenler');
     res.status(200).json({
       success: true,
       data: school,
@@ -30,14 +34,57 @@ const getSchool = async (req, res) => {
 };
 const updateSchool = async (req, res) => {
   try {
-    const school = await School.findByIdAndUpdate(req.query.id, {
-      tercihEdenler: [],
-    });
-    res.status(200).json({
-      success: true,
-      data: school,
-    });
+    const { userId } = req.body;
+    console.log(req.body);
+
+    const sc = await School.findById(req.query.id);
+    if (!sc.tercihEdenler.includes(userId)) {
+      const user = await User.findByIdAndUpdate(userId, {
+        $push: { tercihler: { school: req.query.id, tercihSirasi: 1 } },
+      });
+
+      const school = await School.findByIdAndUpdate(req.query.id, {
+        $push: { tercihEdenler: userId },
+      });
+      res.status(200).json({
+        success: true,
+        data: school,
+        user,
+      });
+    } else {
+      res.status(409).json({
+        success: false,
+        message: 'bu tercihi daha once yapmissiniz',
+      });
+    }
   } catch (error) {
-    res.status(400).json({ success: false });
+    res.status(400).json({ success: false, message: 'bi problem var, sonra tekrar deneyin!' });
+  }
+};
+const removeTercih = async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    const sc = await School.findById(req.query.id);
+    if (sc.tercihEdenler.includes(userId)) {
+      const user = await User.findByIdAndUpdate(userId, {
+        $pull: { tercihler: { school: { $in: req.query.id } } },
+      });
+      const school = await School.findByIdAndUpdate(req.query.id, {
+        $pull: { tercihEdenler: { $in: userId } },
+      });
+      res.status(200).json({
+        success: true,
+        data: school,
+        user,
+      });
+    } else {
+      res.status(409).json({
+        success: false,
+        message: 'bu okulu daha once tercih etmemissiniz ki!!!',
+      });
+    }
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'bi problem var, sonra tekrar deneyin!' });
   }
 };

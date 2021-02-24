@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
 const SchoolSchema = new mongoose.Schema(
   {
-    name: 'String',
+    name: {
+      type: 'String',
+      lowercase: true,
+    },
     il: 'String',
     ilce: 'String',
     kont: 'Number',

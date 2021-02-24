@@ -5,11 +5,14 @@ const userSchema = new mongoose.Schema(
     name: String,
     email: String,
     image: String,
-    sinavSiralamasi: { type: Number, unique: true },
+    sinavSiralamasi: { type: Number },
     tercihler: [
       {
-        type: mongoose.Types.ObjectId,
-        ref: 'school',
+        school: {
+          type: mongoose.Types.ObjectId,
+          ref: 'school',
+        },
+        tercihSirasi: Number,
       },
     ],
   },

@@ -8,12 +8,14 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+  database: process.env.MONGODB_URI,
   pages: {
     signIn: '/giris',
+    // newUser: '/profile',
   },
   debug: process.env.NODE_ENV === 'development',
-  secret: process.env.AUTH_SECRET,
-  jwt: {
-    secret: process.env.JWT_SECRET,
-  },
+  // secret: process.env.AUTH_SECRET,
+  // jwt: {
+  //   secret: process.env.JWT_SECRET,
+  // },
 });

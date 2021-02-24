@@ -1,27 +1,23 @@
-import { AppContext } from 'context/GlobalState';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import NextLink from 'next/link';
-import { useSession } from 'next-auth/client';
-function SchoolCard({ school }) {
-  const { state, dispatch } = useContext(AppContext);
+function SchoolCard({ school, email }) {
   const { name, il, ilce, _id } = school;
+
   return (
-    <div className="p-4 rounded w-36 h-60 flex flex-col justify-between text-center bg-gradient-to-br from-blue-600  shadow-lg">
+    <div className="rounded w-36 h-56 flex flex-col justify-between text-center bg-white  shadow-lg overflow-hidden bg-blue-100">
       <div>
-        <h3 className="text-white font-bold">{name}</h3>
-        <div className="text-xs">{il}</div>
-        <div className="text-xs">{ilce}</div>
+        <h3 className="text-gray-800 font-bold bg-blue-200 px-3 h-32 flex justify-center items-center ">
+          {name}
+        </h3>
+        <div className="text-xs mx-3 mt-3 truncate ">
+          {il}-{ilce}
+        </div>
       </div>
-      <NextLink href={`/schools/${_id}`}>gooo</NextLink>
-      <div className="h-12">
-        <button
-          className="p-2 m-2 bg-white w-10 rounded"
-          onClick={() => dispatch({ type: 'ADD_TERCIH', payload: school })}
-        >
-          +
-        </button>
-        <button className="p-2 m-2 bg-white w-10 rounded">-</button>
-      </div>
+      <NextLink href={`/schools/${_id}`}>
+        <div className="bg-blue-400 p-1 m-4 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white">
+          okula git
+        </div>
+      </NextLink>
     </div>
   );
 }

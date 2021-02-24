@@ -9,7 +9,7 @@ export default async function (req, res) {
       await getUser(req, res);
       break;
     case 'PUT':
-      await updateSchool(req, res);
+      await updateUser(req, res);
       break;
 
     default:
@@ -20,8 +20,11 @@ export default async function (req, res) {
 const getUser = async (req, res) => {
   try {
     const userEmail = req.body;
-    console.log(userEmail);
-    const user = await User.findOne({ email: userEmail });
+    // console.log(userEmail);
+    const user = await User.findOne({ email: userEmail }).populate({
+      path: 'tercihler',
+      // populate: { path: 'school' },
+    });
     res.status(200).json({
       success: true,
       data: user,
@@ -30,16 +33,16 @@ const getUser = async (req, res) => {
     res.status(400).json({ success: false });
   }
 };
-const updateSchool = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
-    const school = await School.findByIdAndUpdate(req.query.id, {
-      tercihEdenler: [],
-    });
+    const { email, values } = req.body;
+    console.log(req.body);
+    const user = await User.findOneAndUpdate({ email: email }, { sinavSiralamasi: values.derece });
     res.status(200).json({
       success: true,
-      data: school,
+      data: user,
     });
   } catch (error) {
-    res.status(400).json({ success: false });
+    res.status(400).json({ success: false, message: 'kullnici update edilirken sikinti cikti' });
   }
 };

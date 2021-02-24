@@ -1,16 +1,13 @@
-const { useQuery, useInfiniteQuery } = require('react-query');
+const { useInfiniteQuery } = require('react-query');
 import axios from 'axios';
-// export default function useSchools() {
-//   return useQuery('schools', async () => {
-//     const data = await fetch('/api/school');
-//     return data.json();
-//   });
-// }
-export default function useSchools() {
+
+export default function useSchools(searchTerm) {
   return useInfiniteQuery(
-    'schools',
+    ['schools', searchTerm],
     async ({ pageParam = 1 }) => {
-      const res = await axios.get(`/api/school?perPage=${24}&page=${pageParam}`);
+      const res = await axios.get(
+        `/api/school?perPage=${24}&page=${pageParam}&search=${searchTerm}`
+      );
       return res.data;
     },
     {
@@ -18,14 +15,3 @@ export default function useSchools() {
     }
   );
 }
-// export default function useSchools() {
-//   return useQuery('schools', async () => {
-//     const data = await fetch('/api/school', {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-//     return data.json();
-//   });
-// }

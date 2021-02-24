@@ -16,12 +16,13 @@ export default async function (req, res) {
 }
 const getSchools = async (req, res) => {
   try {
-    const { page, perPage } = req.query;
+    let { page, perPage, search } = req.query;
+    console.log(search);
     const options = {
       page: parseInt(page),
       limit: parseInt(perPage),
     };
-    const schools = await School.paginate({}, options);
+    const schools = await School.paginate({ name: { $regex: search, $options: 'i' } }, options);
     res.status(200).json({
       success: true,
       data: schools,
