@@ -46,10 +46,10 @@ function profile() {
             {/* {JSON.stringify(data?.data)} */}
             {data?.data.tercihler.map((i, ind) => (
               <div key={ind} className="text-center flex justify-between">
-                {/* <div>tercih sirasi: {i.tercihSirasi}</div> */}
                 <Link href={`/schools/${i.school}`}>
-                  <div className="cursor-pointer p-1 bg-blue-100 my-2">Okul Kodu: {i.school}</div>
+                  <div className="cursor-pointer p-1 bg-blue-100 my-2">{i.okulAdi}</div>
                 </Link>
+                <div>tercih sirasi: {i.tercihSirasi}</div>
               </div>
             ))}
           </div>

@@ -34,13 +34,16 @@ const getSchool = async (req, res) => {
 };
 const updateSchool = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId, okulAdi, tercihSirasi } = req.body;
     console.log(req.body);
 
     const sc = await School.findById(req.query.id);
     if (!sc.tercihEdenler.includes(userId)) {
       const user = await User.findByIdAndUpdate(userId, {
-        $push: { tercihler: { school: req.query.id, tercihSirasi: 1 } },
+        $push: {
+          tercihler: { school: req.query.id, okulAdi: okulAdi, tercihSirasi: tercihSirasi },
+        },
+        // $push: { tercihler: { school: req.query.id, tercihSirasi: 1 } },
       });
 
       const school = await School.findByIdAndUpdate(req.query.id, {

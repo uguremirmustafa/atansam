@@ -20,11 +20,7 @@ export default async function (req, res) {
 const getUser = async (req, res) => {
   try {
     const userEmail = req.body;
-    // console.log(userEmail);
-    const user = await User.findOne({ email: userEmail }).populate({
-      path: 'tercihler',
-      // populate: { path: 'school' },
-    });
+    const user = await User.findOne({ email: userEmail }).populate('tercihler');
     res.status(200).json({
       success: true,
       data: user,

@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 export const tercihEt = async (params) => {
-  const { id, userId } = params;
+  const { id, userId, okulAdi, tercihSirasi } = params;
   const res = await fetch(`/api/school/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ userId }),
+    body: JSON.stringify({ userId, okulAdi, tercihSirasi }),
   });
   const data = await res.json();
   if (!data.success) {

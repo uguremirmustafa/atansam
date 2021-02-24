@@ -19,6 +19,11 @@ const reducers = (state, action) => {
         ...state,
         searchTerm: action.payload,
       };
+    case ACTIONS.OPEN_MODAL:
+      return {
+        ...state,
+        modalOpen: action.payload,
+      };
 
     default:
       break;

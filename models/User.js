@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
           ref: 'school',
         },
         tercihSirasi: Number,
+        okulAdi: String,
       },
     ],
   },

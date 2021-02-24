@@ -1,3 +1,4 @@
+import Modal from '@components/modal/Modal';
 import React from 'react';
 import Navbar from './Navbar';
 

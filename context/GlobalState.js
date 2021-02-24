@@ -8,6 +8,7 @@ export const DataProvider = ({ children }) => {
     darkTheme: true,
     tercihler: [],
     searchTerm: '',
+    modalOpen: false,
   };
   const [state, dispatch] = useReducer(reducers, initialState);
 
