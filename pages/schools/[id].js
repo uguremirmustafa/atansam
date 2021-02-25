@@ -11,7 +11,6 @@ import Fetching from '@components/loaders/Fetching';
 import Loading from '@components/loaders/Loading';
 import { AppContext } from 'context/GlobalState';
 import Modal from '@components/modal/Modal';
-import ModalForm from '@components/modal/ModalForm';
 import TercihEdenlerTable from '@components/table/TercihEdenlerTable';
 function Okul() {
   const { state, dispatch } = useContext(AppContext);

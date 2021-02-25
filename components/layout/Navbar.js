@@ -10,7 +10,10 @@ function Navbar() {
     <nav className="bg-white shadow-sm p-4 font-bold fixed w-full">
       <div className="max-w-4xl mx-auto flex justify-between flex-row">
         <Link href="/">
-          <div className="logo cursor-pointer py-2">Atansam</div>
+          <div className="logo cursor-pointer py-2 flex items-center">
+            <img src="logo.png" alt="logo" className="h-6 rounded mr-2" />
+            <p className="hidden md:flex">| Atansam</p>
+          </div>
         </Link>
         <div className="flex">
           {session && (

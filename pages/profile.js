@@ -43,15 +43,16 @@ function profile() {
           </div>
           <div className="p-4 bg-white rounded shadow-md">
             <h3 className="text-center font-bold my-2 text-xl">Tercih Listem</h3>
-            {/* {JSON.stringify(data?.data)} */}
-            {data?.data.tercihler.map((i, ind) => (
-              <div key={ind} className="text-center flex justify-between">
-                <Link href={`/schools/${i.school}`}>
-                  <div className="cursor-pointer p-1 bg-blue-100 my-2">{i.okulAdi}</div>
-                </Link>
-                <div>tercih sirasi: {i.tercihSirasi}</div>
-              </div>
-            ))}
+            {data?.data.tercihler
+              .sort((a, b) => a.tercihSirasi - b.tercihSirasi)
+              .map((i, ind) => (
+                <div key={ind} className="text-center flex justify-between">
+                  <Link href={`/schools/${i.school}`}>
+                    <div className="cursor-pointer p-1 bg-blue-100 my-2">{i.okulAdi}</div>
+                  </Link>
+                  <div>tercih sirasi: {i.tercihSirasi}</div>
+                </div>
+              ))}
           </div>
         </div>
       )}
