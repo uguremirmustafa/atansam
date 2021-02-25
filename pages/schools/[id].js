@@ -12,6 +12,7 @@ import Loading from '@components/loaders/Loading';
 import { AppContext } from 'context/GlobalState';
 import Modal from '@components/modal/Modal';
 import ModalForm from '@components/modal/ModalForm';
+import TercihEdenlerTable from '@components/table/TercihEdenlerTable';
 function Okul() {
   const { state, dispatch } = useContext(AppContext);
   const router = useRouter();
@@ -38,12 +39,12 @@ function Okul() {
             Error: {schoolError.message} , {userError.message}
           </span>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <Fetching />
-            <div className="p-4 bg-white rounded shadow-md text-center">
+            <div className="p-4 bg-white rounded shadow-md text-center h-60">
               <Modal id={id} userId={userId} okulAdi={okulAdi} />
               <div className="text-xl font-bold my-2">{school?.data.name}</div>
-              <div className="text-xl font-bold my-2">{school?.data._id}</div>
+              {/* <div className="text-xl font-bold my-2">{school?.data._id}</div> */}
               <div>{school?.data.il}</div>
               <div>{school?.data.ilce}</div>
               <div>Kontenjan: {school?.data.kont}</div>
@@ -52,52 +53,30 @@ function Okul() {
               ) : (
                 <div className="flex justify-center">
                   <button
-                    className="bg-green-400 p-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white"
+                    className="bg-green-400 p-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white flex items-center"
                     onClick={() => {
                       dispatch({ type: 'OPEN_MODAL', payload: true });
-                      // add.mutate({ id, userId, okulAdi });
                     }}
                   >
-                    <FaPlus size="20px" />
+                    <FaPlus size="16px" style={{ marginRight: '8px' }} /> Tercih Et
                   </button>
                   <button
-                    className="bg-red-400 p-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white"
+                    className="bg-red-400 p-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white flex items-center"
                     onClick={() => {
                       remove.mutate({ id, userId });
                     }}
                   >
-                    <FaMinus size="20px" />
+                    <FaMinus size="16px" style={{ marginRight: '8px' }} /> Tercihi Kaldır
                   </button>
                 </div>
               )}
             </div>
             <div className="p-4 bg-white rounded shadow-md">
               <h3 className="text-center font-bold my-2 text-xl">Tercih Edenler</h3>
-              <div className="text-center flex justify-between">
-                <span>öğr.</span>
-                <span>derecesi</span>
-                <span>kaçıncı sırada yazmış</span>
-              </div>
               {!user?.data.sinavSiralamasi ? (
                 <div>OABT siralamani girmeden bu okulu tercih edenleri goremezsin</div>
               ) : (
-                <>
-                  {school?.data.tercihEdenler.length > 0
-                    ? school?.data.tercihEdenler.map((i, ind) => {
-                        const ts = i.tercihler.filter((o) => o.school === school?.data._id);
-                        // console.log(ts);
-                        return (
-                          <div key={ind}>
-                            <div className="text-center flex justify-between">
-                              <span>{i.name}</span>
-                              <span>{i.sinavSiralamasi}</span>
-                              {ts.length > 0 && <span>{ts[0].tercihSirasi}</span>}
-                            </div>
-                          </div>
-                        );
-                      })
-                    : 'kimse yazmamis'}
-                </>
+                <TercihEdenlerTable school={school} />
               )}
             </div>
           </div>

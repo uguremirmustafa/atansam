@@ -21,7 +21,7 @@ const ModalForm = ({ id, userId, okulAdi }) => {
       <div className="w-full flex justify-between h-12 items-center p-4 text-white font-bold">
         <div>Tercihini yap</div>
         <div
-          className="p-1 border-2 rounded border-blue-100"
+          className="p-1 border-2 rounded border-blue-100 cursor-pointer"
           onClick={() => dispatch({ type: 'OPEN_MODAL', payload: false })}
         >
           <FaTimesCircle size="18px" />

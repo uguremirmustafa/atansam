@@ -1,3 +1,4 @@
+import Loading from '@components/loaders/Loading';
 import { getData } from '@utils/fetchData';
 import { signIn, useSession } from 'next-auth/client';
 import Link from 'next/link';
@@ -15,7 +16,11 @@ const Index = () => {
           Keske atansam
         </span>
       </div>
-      {loading && <div>loading...</div>}
+      {loading && (
+        <div>
+          <Loading />
+        </div>
+      )}
       {!loading && !session && (
         <button
           className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-20 "

@@ -39,6 +39,15 @@ const updateSchool = async (req, res) => {
 
     const sc = await School.findById(req.query.id);
     if (!sc.tercihEdenler.includes(userId)) {
+      const usr = await User.findById(userId);
+      const tercihSiralari = usr.tercihler.map((i) => i.tercihSirasi);
+      if (tercihSiralari.includes(tercihSirasi)) {
+        res.status(409).json({
+          success: false,
+          message: 'ayni siraya baska bir okulu koymussunuz!',
+        });
+        return;
+      }
       const user = await User.findByIdAndUpdate(userId, {
         $push: {
           tercihler: { school: req.query.id, okulAdi: okulAdi, tercihSirasi: tercihSirasi },
@@ -53,6 +62,7 @@ const updateSchool = async (req, res) => {
         success: true,
         data: school,
         user,
+        message: 'okulu basariyla tercih ettiniz!',
       });
     } else {
       res.status(409).json({
