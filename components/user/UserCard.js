@@ -20,7 +20,7 @@ function UserCard({ user }) {
             <FaRegEnvelope />
           </a>
         </p>
-        <p className="py-1">{user.sinavSiralamasi && user.sinavSiralamasi}</p>
+        <p className="py-1 h-12">{user.sinavSiralamasi && user.sinavSiralamasi}</p>
       </div>
     </div>
   );

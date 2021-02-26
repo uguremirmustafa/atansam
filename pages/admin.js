@@ -13,12 +13,12 @@ function Admin({ data, success }) {
     }
   }, [success]);
   const userEmail = data?.user.email;
-  const { data: users, isLoading, error, isFetching } = useUsers(userEmail);
+  const { data: users, isLoading, error } = useUsers(userEmail);
   return (
     <div>
       {isLoading && <Loading />}
       {error && <div>hata olustu {error}</div>}
-      <div className="grid gap-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
+      <div className="px-2 place-items-center grid gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {users && users.data.map((i) => <UserCard key={i._id} user={i} />)}
       </div>
     </div>
