@@ -16,6 +16,13 @@ const userSchema = new mongoose.Schema(
         okulAdi: String,
       },
     ],
+    yorumlar: [
+      {
+        okul: 'String',
+        okulId: 'String',
+        yorum: 'String',
+      },
+    ],
   },
   {
     timestamps: true,

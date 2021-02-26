@@ -12,6 +12,36 @@ export const tercihEt = async (params) => {
   const data = await res.json();
   if (!data.success) {
     alert(data.message);
+  } else alert(data.message);
+  return data;
+};
+export const yorumYap = async (params) => {
+  const { userEmail, comment, okulAdi, id } = params;
+  const res = await fetch(`/api/school/${id}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userEmail, okulAdi, comment, id }),
+  });
+  const data = await res.json();
+  if (!data.success) {
+    alert(data.message);
+  }
+  return data;
+};
+export const yorumSil = async (params) => {
+  const { commentId, id } = params;
+  const res = await fetch(`/api/school/${id}/comments`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ commentId, id }),
+  });
+  const data = await res.json();
+  if (!data.success) {
+    alert(data.message);
   }
   return data;
 };
@@ -69,6 +99,22 @@ export const updateUserMutation = () => {
   return useMutation(updateUser, {
     onSuccess: (_key, variables) => {
       queryClient.invalidateQueries('user');
+    },
+  });
+};
+export const commentOnMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation(yorumYap, {
+    onSuccess: (_key, variables) => {
+      queryClient.invalidateQueries(`school/${variables.id}`);
+    },
+  });
+};
+export const deleteCommentMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation(yorumSil, {
+    onSuccess: (_key, variables) => {
+      queryClient.invalidateQueries(`school/${variables.id}`);
     },
   });
 };

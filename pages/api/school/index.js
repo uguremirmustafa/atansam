@@ -8,6 +8,9 @@ export default async function (req, res) {
     case 'GET':
       await getSchools(req, res);
       break;
+    case 'POST':
+      await getSchoolsCommented(req, res);
+      break;
 
     default:
       res.status(400).json({ success: false });
@@ -23,6 +26,21 @@ const getSchools = async (req, res) => {
       limit: parseInt(perPage),
     };
     const schools = await School.paginate({ name: { $regex: search, $options: 'i' } }, options);
+    res.status(200).json({
+      success: true,
+      data: schools,
+    });
+  } catch (error) {
+    res.status(400).json({ success: false });
+  }
+};
+const getSchoolsCommented = async (req, res) => {
+  try {
+    let { email } = req.body;
+    console.log(email);
+
+    const schools = await School.find({ 'yorumlar.kullanici': email }, 'yorumlar name');
+
     res.status(200).json({
       success: true,
       data: schools,

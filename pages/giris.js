@@ -1,3 +1,4 @@
+import Welcome from '@components/Welcome';
 import { providers, signIn, useSession } from 'next-auth/client';
 
 export default function SignIn({ providers }) {
@@ -14,10 +15,11 @@ export default function SignIn({ providers }) {
         <div>welcome {session.user.name}</div>
       ) : (
         <>
+          <div className="font-bold text-center mt-8 ">Heyecanla seni bekliyoruz...</div>
           {Object.values(providers).map((provider) => (
-            <div key={provider.name} className="flex flex-col justify-center items-center h-96">
+            <div key={provider.name} className="flex flex-col justify-center items-center h-40">
               <button
-                className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full"
+                className="mx-auto py-2 px-4 bg-blue-400 font-bold text-white rounded-full"
                 onClick={
                   () =>
                     signIn(provider.id, {
@@ -30,6 +32,11 @@ export default function SignIn({ providers }) {
               </button>
             </div>
           ))}
+          <Welcome />
+          <span className="text-xs fixed bottom-10 text-center flex justify-center items-center">
+            üye olarak google kullanıcı kimlik bilgilerinin(email, kullanıcı adı) ve profil
+            güncellemelerinin üçüncü kişilerle paylaşılmasını onaylamış oluyorsunuz.
+          </span>
         </>
       )}
     </>

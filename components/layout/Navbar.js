@@ -50,7 +50,7 @@ function Navbar() {
             <div className="inline">
               {!session && (
                 <Link href="/giris">
-                  <div className="py-2 px-4 hover:bg-green-500 hover:text-white rounded-full cursor-pointer">
+                  <div className="py-2 px-4 bg-green-500 text-white rounded-full cursor-pointer">
                     Giriş
                   </div>
                 </Link>

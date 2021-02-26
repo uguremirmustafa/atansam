@@ -1,6 +1,8 @@
+import CommentCard from '@components/comments/CommentCard';
 import Loading from '@components/loaders/Loading';
 import Profil from '@components/ProfileForm';
-import useSchools from '@utils/useSchools';
+import getSchoolsWithMyComments from '@utils/getSchoolsWithMyComments';
+
 import { useUser } from '@utils/useUser';
 import { useSession } from 'next-auth/client';
 import Link from 'next/link';
@@ -13,7 +15,11 @@ function profile() {
   const image = session?.user.image;
 
   const { isLoading, error, data, isFetching } = useUser(email);
-
+  const { data: schoolsCommented, isLoading: schoolsCommentedLoading } = getSchoolsWithMyComments(
+    email
+  );
+  schoolsCommented && console.log(schoolsCommented);
+  console.log(schoolsCommentedLoading);
   //rendering
   if (error) return <div>{error}</div>;
   return (
@@ -48,7 +54,7 @@ function profile() {
               .map((i, ind) => (
                 <div
                   key={ind}
-                  className="text-center flex justify-between cursor-pointer py-1 px-2 bg-blue-100 my-1 items-center rounded"
+                  className="text-center flex justify-between cursor-pointer py-1 px-2 bg-blue-100 my-1 items-center rounded hover:text-blue-400 text-blue-600 transition duration-300 ease-in-out"
                 >
                   <Link href={`/schools/${i.school}`}>
                     <div>{i.okulAdi}</div>
@@ -56,6 +62,28 @@ function profile() {
                   <div>tercih sirasi: {i.tercihSirasi}</div>
                 </div>
               ))}
+          </div>
+          <div className="bg-white p-4 w-full col-span-2">
+            <h3 className="text-center font-bold my-2 text-xl">Yorumlarım</h3>
+            {schoolsCommentedLoading && <Loading />}
+            {schoolsCommented?.data.map((i) => {
+              return (
+                <div key={i._id} className="grid overflow-hidden mb-2 rounded">
+                  <Link href={`/schools/${i._id}`}>
+                    <div className=" bg-red-200 p-1 rounded-t cursor-pointer text-red-900 hover:text-red-700 transition duration-300 ease-in-out">
+                      {i.name}
+                    </div>
+                  </Link>
+                  {i.yorumlar
+                    .filter((i) => i.kullanici === email)
+                    .map((i) => (
+                      <p key={i._id} className="p-1 bg-red-50 truncate border-b-2 border-red-100">
+                        {i.yorum}
+                      </p>
+                    ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

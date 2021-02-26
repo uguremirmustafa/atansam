@@ -44,7 +44,7 @@ const updateSchool = async (req, res) => {
       if (tercihSiralari.includes(tercihSirasi)) {
         res.status(409).json({
           success: false,
-          message: 'ayni siraya baska bir okulu koymussunuz!',
+          message: 'aynı sıraya başka bir okulu koymuşsunuz!',
         });
         return;
       }
@@ -62,12 +62,12 @@ const updateSchool = async (req, res) => {
         success: true,
         data: school,
         user,
-        message: 'okulu basariyla tercih ettiniz!',
+        message: 'okulu başarıyla tercih ettiniz!',
       });
     } else {
       res.status(409).json({
         success: false,
-        message: 'bu tercihi daha once yapmissiniz',
+        message: 'bu tercihi daha önce yapmışsınız!',
       });
     }
   } catch (error) {

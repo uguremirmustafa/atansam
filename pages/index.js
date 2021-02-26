@@ -1,13 +1,7 @@
 import Loading from '@components/loaders/Loading';
-import { getData } from '@utils/fetchData';
 import { signIn, useSession } from 'next-auth/client';
-import Link from 'next/link';
 
 const Index = () => {
-  const callbackUrl =
-    process.env.NODE_ENV === 'production'
-      ? process.env.PRODUCTIONURL
-      : `${process.env.BASE_URL}/profile`;
   const [session, loading] = useSession();
   return (
     <div className="py-10 flex flex-col justify-center">
@@ -18,7 +12,7 @@ const Index = () => {
         <p className="italic  text-center pb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
           okul öncesi için kpss atama simülasyonu
         </p>
-        <p className="text-md font-normal mt-4 bg-white rounded m-4 shadow-lg overflow-hidden p-4">
+        <p className="text-md font-normal mt-4 bg-white rounded m-2 shadow-lg overflow-hidden p-4">
           Bu uygulama{' '}
           <a href="https://prepokul.com" className="text-blue-400 font-bold" target="_blank">
             Prepokul
@@ -32,7 +26,7 @@ const Index = () => {
           </a>{' '}
           takip ederek destek olabilir bizleri mutlu edebilirsiniz.
         </p>
-        <div className="bg-white rounded m-4 shadow-lg overflow-hidden">
+        <div className="bg-white rounded m-2 shadow-lg overflow-hidden">
           <p className="bg-blue-200 p-4">Uygulamaya kaydolurken şunlar aklınızda bulunsun:</p>
           <ul className="font-normal">
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
@@ -61,18 +55,20 @@ const Index = () => {
               Okullar ve sıralamalar belli olduğunda tüm veriler(kullanıcı profilleri ve okullar)
               silinip yeniden kullanıma açılacaktır.
             </li>
-            <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
-              Uygulamaya üye olup test ettiğiniz için teşekkürler.
-            </li>
+
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
               Uygulamaya kaydolup tercih yaptığınızda gmail adresiniz diğer kullanıcılar tarafından
-              görülebilecektir.
+              görülebilecektir. Her bir okulun sayfasında o okulu tercih edenler listelenecektir.
+              İsimlerinin yanındaki mektup işaretine tıklayarak kullanıcıya mail atabilirsiniz.
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
-              Uygulama ile ilgili talepleriniz ve düşünceleriniz için{' '}
+              Uygulama ile ilgili talepleriniz ve düşünceleriniz için her zaman{' '}
               <a href="https://instagram.com/uguremirmustafa" className="text-blue-400 font-bold">
                 bana ulaşabilirsiniz.
               </a>
+            </li>
+            <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
+              Uygulamaya üye olup test ettiğiniz için teşekkürler.
             </li>
           </ul>
         </div>
@@ -84,10 +80,10 @@ const Index = () => {
       )}
       {!loading && !session && (
         <button
-          className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-20 "
+          className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-40 mb-20 font-bold"
           onClick={() => signIn()}
         >
-          giris
+          Giriş Yap
         </button>
       )}
     </div>

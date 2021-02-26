@@ -15,6 +15,13 @@ const SchoolSchema = new mongoose.Schema(
         ref: 'user',
       },
     ],
+    yorumlar: [
+      {
+        kullanici: 'String',
+        yorum: 'String',
+      },
+      { timestamps: true },
+    ],
   },
   {
     timestamps: true,
