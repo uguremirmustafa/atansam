@@ -15,7 +15,10 @@ const Index = () => {
         <p className="text-5xl mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 pb-6">
           Keşke Atansam
         </p>
-        <p className="text-lg font-normal mt-4 bg-white rounded m-4 shadow-lg overflow-hidden p-4">
+        <p className="italic  text-center pb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+          okul öncesi için kpss atama simülasyonu
+        </p>
+        <p className="text-md font-normal mt-4 bg-white rounded m-4 shadow-lg overflow-hidden p-4">
           Bu uygulama{' '}
           <a href="https://prepokul.com" className="text-blue-400 font-bold" target="_blank">
             Prepokul
@@ -48,8 +51,7 @@ const Index = () => {
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer ">
               Derecenizi <span className="font-bold">sadece bir kez</span> girme şansına sahipsiniz.
-              Meslektaşlarınızı yanıltmamak adına doğru derecenizi doğru girmeniz önemle rica
-              olunur.
+              Meslektaşlarınızı yanıltmamak adına derecenizi doğru girmeniz önemle rica olunur.
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
               Uygulama şu an okullar açıklanmadığı ve son sıralamanız(mülakat puanı vs.)
@@ -61,6 +63,16 @@ const Index = () => {
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
               Uygulamaya üye olup test ettiğiniz için teşekkürler.
+            </li>
+            <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
+              Uygulamaya kaydolup tercih yaptığınızda gmail adresiniz diğer kullanıcılar tarafından
+              görülebilecektir.
+            </li>
+            <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
+              Uygulama ile ilgili talepleriniz ve düşünceleriniz için{' '}
+              <a href="https://instagram.com/uguremirmustafa" className="text-blue-400 font-bold">
+                bana ulaşabilirsiniz.
+              </a>
             </li>
           </ul>
         </div>

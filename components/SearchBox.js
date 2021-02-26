@@ -13,14 +13,14 @@ export default function SearchBox() {
   };
 
   return (
-    <div>
+    <div className="fixed top-20 sm:top-2">
       <form onSubmit={onSubmit} className="flex px-6 flex-start">
         <input
           type="text"
           value={searchTerm}
           placeholder="Acaba hangi okula atansam..."
           onChange={changeHandler}
-          className="h-12 px-4 bg-blue-100 font-bold text-black outline-none rounded shadow-md sm:w-56 md:w-96"
+          className="h-12 px-4 bg-blue-100 font-normal text-black outline-none rounded shadow-md sm:w-56 md:w-56"
         />
         <button
           type="submit"

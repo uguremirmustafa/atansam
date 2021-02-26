@@ -8,6 +8,7 @@ import { AppContext } from 'context/GlobalState';
 import { useRouter } from 'next/router';
 import { useUser } from '@utils/useUser';
 import Loading from '@components/loaders/Loading';
+import Link from 'next/link';
 
 function schools() {
   const router = useRouter();
@@ -37,7 +38,16 @@ function schools() {
   });
 
   //rendering...
-  if (!session) return <div>you are not authorised to see the content</div>;
+  if (!session)
+    return (
+      <div className="text-center p-2 bg-white rounded">
+        Okulları görmek için{' '}
+        <Link href="/giris">
+          <span className="text-blue-400 font-bold cursor-pointer ">giriş</span>
+        </Link>{' '}
+        yapmalısın!
+      </div>
+    );
   return (
     <div className="flex justify-center items-center flex-col">
       {status === 'loading' || loading ? (
@@ -47,7 +57,7 @@ function schools() {
       ) : (
         <>
           <SearchBox />
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-20 md:mt-2">
             {data?.pages.map((group, i) => (
               <React.Fragment key={i}>
                 {group.data.docs.map((school) => (
@@ -60,13 +70,13 @@ function schools() {
             ref={loadMoreButtonRef}
             onClick={() => fetchNextPage()}
             disabled={!hasNextPage || isFetchingNextPage}
-            className="p-2 bg-blue-400 font-bold text-white m-2"
+            className="p-2 bg-blue-400 font-bold text-white mb-20 mt-2 rounded font-bold"
           >
             {isFetchingNextPage
-              ? 'Yukleniyor...'
+              ? 'Yükleniyor...'
               : hasNextPage
-              ? 'Daha fazla okul yukle'
-              : 'Listenin sonuna geldiniz'}
+              ? 'Daha fazla okul yükle'
+              : 'Listenin sonuna geldiniz. Arama butonuna tıklayarak tüm okulları tekrar görebilirsiniz!'}
           </button>
         </>
       )}

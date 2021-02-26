@@ -46,9 +46,12 @@ function profile() {
             {data?.data.tercihler
               .sort((a, b) => a.tercihSirasi - b.tercihSirasi)
               .map((i, ind) => (
-                <div key={ind} className="text-center flex justify-between">
+                <div
+                  key={ind}
+                  className="text-center flex justify-between cursor-pointer py-1 px-2 bg-blue-100 my-1 items-center rounded"
+                >
                   <Link href={`/schools/${i.school}`}>
-                    <div className="cursor-pointer p-1 bg-blue-100 my-2">{i.okulAdi}</div>
+                    <div>{i.okulAdi}</div>
                   </Link>
                   <div>tercih sirasi: {i.tercihSirasi}</div>
                 </div>

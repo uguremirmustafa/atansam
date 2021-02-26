@@ -1,10 +1,6 @@
 import React from 'react';
 
 function TercihEdenlerTable({ school }) {
-  // school?.data.tercihEdenler.length > 0
-  //     ? school?.data.tercihEdenler.map((i, ind) => {
-  //         const ts = i.tercihler.filter((o) => o.school === school?.data._id);
-  console.log(school);
   return (
     <div className="w-full ">
       <table className="table-fixed w-full">
@@ -35,7 +31,7 @@ function TercihEdenlerTable({ school }) {
                 );
               })
           ) : (
-            <div>kimse yok</div>
+            <div className="font-bold py-2 text-red-400">bu okulu henüz tercih eden olmamış</div>
           )}
         </tbody>
       </table>

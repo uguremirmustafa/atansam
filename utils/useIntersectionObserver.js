@@ -5,7 +5,7 @@ export default function useIntersectionObserver({
   target,
   onIntersect,
   threshold = 1,
-  rootMargin = '0px',
+  rootMargin = '100px',
   enabled = true,
 }) {
   React.useEffect(() => {
