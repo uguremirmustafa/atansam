@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { useUser } from '@utils/useUser';
 import Loading from '@components/loaders/Loading';
 import Link from 'next/link';
-import { Adsense } from '@components/advertisement/AdBanner';
+// import { Adsense } from '@components/advertisement/AdBanner';
 
 function schools() {
   const router = useRouter();
@@ -51,13 +51,13 @@ function schools() {
     );
   return (
     <div className="flex justify-center items-center flex-col">
-      {status === 'loading' || loading ? (
+      {status === 'loading' || loading || true ? (
         <Loading />
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>
       ) : (
         <>
-          <Adsense />
+          {/* <Adsense /> */}
           <SearchBox />
           <div className=" grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-20 md:mt-2">
             {data?.pages.map((group, i) => (

@@ -14,7 +14,7 @@ import Modal from '@components/modal/Modal';
 import TercihEdenlerTable from '@components/table/TercihEdenlerTable';
 import CommentForm from '@components/comments/CommentForm';
 import CommentCard from '@components/comments/CommentCard';
-import { Adsense } from '@components/advertisement/AdBanner';
+// import { Adsense } from '@components/advertisement/AdBanner';
 function Okul() {
   const { state, dispatch } = useContext(AppContext);
   const router = useRouter();
@@ -43,7 +43,7 @@ function Okul() {
         <div className="grid grid-cols-1 gap-4">
           <Fetching />
           <BackToSchool />
-          <Adsense />
+          {/* <Adsense /> */}
           <div className="p-4 bg-white rounded shadow-md text-center h-60">
             <Modal id={id} userId={userId} okulAdi={okulAdi} />
             <div className="text-xl font-bold my-2 h-8">{school?.data.name}</div>

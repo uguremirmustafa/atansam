@@ -9,12 +9,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script
+          {/* <script
             data-ad-client="ca-pub-2277559576123641"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
-          <script
+          ></script> */}
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,7 +23,7 @@ class MyDocument extends Document {
               });
                 `,
             }}
-          />
+          /> */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
           <script
             dangerouslySetInnerHTML={{
