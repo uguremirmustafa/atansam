@@ -1,5 +1,6 @@
 import Loading from '@components/loaders/Loading';
 import { signIn, useSession } from 'next-auth/client';
+import Link from 'next/link';
 
 const Index = () => {
   const [session, loading] = useSession();
@@ -78,13 +79,19 @@ const Index = () => {
           <Loading />
         </div>
       )}
-      {!loading && !session && (
+      {!loading && !session ? (
         <button
           className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-40 mb-20 font-bold"
           onClick={() => signIn()}
         >
           Giriş Yap
         </button>
+      ) : (
+        <Link href="/schools">
+          <button className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-40 mb-20 font-bold">
+            Tercih Yap
+          </button>
+        </Link>
       )}
     </div>
   );
