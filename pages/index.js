@@ -100,7 +100,7 @@ const Index = () => {
               </a>
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
-              Uygulamaya üye olup test ettiğiniz için teşekkürler.
+              Uygulamaya üye olup test ettiğiniz için teşekkürler...
             </li>
           </ul>
         </div>
