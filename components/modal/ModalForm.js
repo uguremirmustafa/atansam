@@ -15,6 +15,7 @@ const ModalForm = ({ id, userId, okulAdi }) => {
     e.preventDefault();
     add.mutate({ id, userId, okulAdi, tercihSirasi });
     dispatch({ type: 'OPEN_MODAL', payload: false });
+    setTercihSirasi('');
   };
   return (
     <div>
@@ -22,7 +23,10 @@ const ModalForm = ({ id, userId, okulAdi }) => {
         <div>Tercihini yap</div>
         <div
           className="p-1 border-2 rounded border-blue-100 cursor-pointer"
-          onClick={() => dispatch({ type: 'OPEN_MODAL', payload: false })}
+          onClick={() => {
+            dispatch({ type: 'OPEN_MODAL', payload: false });
+            setTercihSirasi('');
+          }}
         >
           <FaTimesCircle size="18px" />
         </div>

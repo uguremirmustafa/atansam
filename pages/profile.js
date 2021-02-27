@@ -18,8 +18,7 @@ function profile() {
   const { data: schoolsCommented, isLoading: schoolsCommentedLoading } = getSchoolsWithMyComments(
     email
   );
-  schoolsCommented && console.log(schoolsCommented);
-  console.log(schoolsCommentedLoading);
+
   //rendering
   if (error) return <div>{error}</div>;
   return (

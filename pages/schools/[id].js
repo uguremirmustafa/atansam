@@ -29,9 +29,8 @@ function Okul() {
   //get school
   const { data: school, error: schoolError, status: schoolStatus } = useSchool(id, userId);
   const okulAdi = school?.data.name;
-  const add = useAddSchoolToTercihs();
   const remove = useRemoveSchoolFromTercihs();
-  console.log(school);
+
   return (
     <div className="px-4 py-2">
       {(userStatus || schoolStatus) === 'loading' || loading ? (

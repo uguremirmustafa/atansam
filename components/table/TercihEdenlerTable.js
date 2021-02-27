@@ -23,12 +23,12 @@ function TercihEdenlerTable({ school }) {
 
                 return (
                   <tr key={ind} className={`${ind % 2 === 0 ? 'bg-blue-50' : 'bg-blue-200'} h-8`}>
-                    <td className="text-left px-2 lowercase text-xs md:text-sm flex py-2 items-center">
+                    <td className="text-left px-2 lowercase text-xs md:text-sm flex items-start py-2 items-center">
+                      <a href={`mailto:${i.email}`} className="relative">
+                        <FaRegEnvelope style={{ marginRight: '4px' }} />
+                      </a>
                       <span className="hidden md:block">{i.email}</span>
                       <span className="md:hidden">{i.name.split(' ')[0]} </span>
-                      <a href={`mailto:${i.email}`} className="relative w-full">
-                        <FaRegEnvelope style={{ marginLeft: '4px' }} />
-                      </a>
                     </td>
                     <td className="text-center px-2 text-xs md:text-sm">{i.sinavSiralamasi}</td>
                     <td className="text-right px-2 text-xs md:text-sm">

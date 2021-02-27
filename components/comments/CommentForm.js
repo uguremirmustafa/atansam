@@ -22,12 +22,12 @@ export default function CommentForm({ id, email, okulAdi }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h3 className="flex items-center p-4 font-bold w-full bg-blue-200 text-gray-800 rounded-t">
         <FaComment style={{ margin: '0 5px' }} /> Yorum yap
       </h3>
-      <form onSubmit={onSubmit} className="flex flex-col justif-center w-full relative">
-        <div className="h-40 mb-8 w-full">
+      <form onSubmit={onSubmit} className="flex flex-col justif-center w-full relative z-index-0">
+        <div className="h-40 mb-8 w-full ">
           <textarea
             name="yorum"
             id="yorum"
@@ -35,7 +35,7 @@ export default function CommentForm({ id, email, okulAdi }) {
             onChange={changeHandler}
             rows="30"
             cols="30"
-            className="h-full p-2 md:p-4 bg-blue-100 font-normal text-black outline-none rounded-bottom shadow-md text-gray-900 w-full resize-none"
+            className="h-full p-2 md:p-4 bg-blue-100 font-normal text-black outline-none rounded-bottom shadow-md text-gray-900 w-full resize-none "
             placeholder="Aslında memleketin her köşesi cennet ama düzenimiz var burada bizim..."
           />
         </div>
