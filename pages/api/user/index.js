@@ -32,13 +32,14 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { email, values } = req.body;
-    console.log(req.body);
+    const derece = values.derece;
+
     const user = await User.findOneAndUpdate({ email: email }, { sinavSiralamasi: values.derece });
     res.status(200).json({
       success: true,
       data: user,
     });
   } catch (error) {
-    res.status(400).json({ success: false, message: 'kullnici update edilirken sikinti cikti' });
+    res.status(400).json({ success: false, message: error });
   }
 };

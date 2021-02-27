@@ -51,7 +51,7 @@ function schools() {
     );
   return (
     <div className="flex justify-center items-center flex-col">
-      {status === 'loading' || loading || true ? (
+      {status === 'loading' || loading ? (
         <Loading />
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>

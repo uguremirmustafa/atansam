@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
-
+// import uniqueValidator from 'mongoose-unique-validator';
 const userSchema = new mongoose.Schema(
   {
     name: String,
     email: String,
     image: String,
-    sinavSiralamasi: { type: Number },
+    sinavSiralamasi: {
+      type: Number,
+    },
     tercihler: [
       {
         school: {
@@ -28,5 +30,5 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-let Dataset = mongoose.models.user || mongoose.model('user', userSchema);
-export default Dataset;
+// userSchema.plugin(uniqueValidator, { type: 'mongoose-unique-validator' });
+export default mongoose.models.user || mongoose.model('user', userSchema);

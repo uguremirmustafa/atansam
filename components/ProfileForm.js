@@ -38,6 +38,8 @@ const Profil = ({ email }) => {
               type="number"
               name="derece"
               onChange={handleChange}
+              min="1"
+              max="30000"
               onBlur={handleBlur}
               value={values.derece}
               placeholder="derecenizi giriniz"
