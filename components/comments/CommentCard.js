@@ -1,5 +1,4 @@
 import { deleteCommentMutation } from '@utils/mutations';
-import { useUser } from '@utils/useUser';
 import React from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
 

@@ -4,11 +4,6 @@ import { providers, signIn, useSession } from 'next-auth/client';
 export default function SignIn({ providers }) {
   const [session, loading] = useSession();
   if (loading) return <div>loading</div>;
-  // const callbackUrl =
-  //   process.env.NODE_ENV === 'production'
-  //     ? process.env.PRODUCTIONURL
-  //     : `${process.env.BASE_URL}/profile`;
-
   return (
     <>
       {session ? (
@@ -16,8 +11,9 @@ export default function SignIn({ providers }) {
       ) : (
         <>
           <div className="font-bold text-center mt-8 ">Heyecanla seni bekliyoruz...</div>
+          <Welcome />
           {Object.values(providers).map((provider) => (
-            <div key={provider.name} className="flex flex-col justify-center items-center h-40">
+            <div key={provider.name} className="flex flex-col justify-center items-center h-16">
               <button
                 className="mx-auto py-2 px-4 bg-blue-400 font-bold text-white rounded-full"
                 onClick={
@@ -32,7 +28,7 @@ export default function SignIn({ providers }) {
               </button>
             </div>
           ))}
-          <Welcome />
+
           <span className="text-xs fixed bottom-10 text-center flex justify-center items-center">
             üye olarak google kullanıcı kimlik bilgilerinin(email, kullanıcı adı) ve profil
             güncellemelerinin üçüncü kişilerle paylaşılmasını onaylamış oluyorsunuz.

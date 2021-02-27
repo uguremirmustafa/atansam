@@ -15,7 +15,7 @@ const Index = () => {
         </p>
         <div className="flex justify-center items-center">
           {loading && (
-            <div>
+            <div className="flex justify-center items-center">
               <Loading />
             </div>
           )}
@@ -53,7 +53,9 @@ const Index = () => {
           takip ederek destek olabilir bizleri mutlu edebilirsiniz.
         </p>
         <div className="bg-white rounded m-2 shadow-lg overflow-hidden">
-          <p className="bg-blue-200 p-4">Uygulamaya kaydolurken şunlar aklınızda bulunsun:</p>
+          <p className="bg-blue-200 p-4 font-bold">
+            Uygulamaya kaydolurken şunlar aklınızda bulunsun:
+          </p>
           <ul className="font-normal">
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
               Uygulamaya kaydolmak için Gmail hesabınızın olması gerekir.

@@ -2,13 +2,13 @@ import React from 'react';
 
 function Welcome() {
   return (
-    <div className="w-full">
+    <div className="w-full flex justify-center">
       <svg
         id="a767eac7-073f-42f5-be07-7b01228cc98c"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
-        width={`${88.07556}*${2}`}
-        height={`${45.37952}`}
+        width="176"
+        height="90"
         viewBox="0 0 889.07556 459.37952"
         className="h-56"
       >

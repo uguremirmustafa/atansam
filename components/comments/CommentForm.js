@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { FaComment, FaPaperPlane } from 'react-icons/fa';
 
 export default function CommentForm({ id, email, okulAdi }) {
-  console.log(id, email, okulAdi);
-
   const com = commentOnMutation();
 
   const [comment, setComment] = useState('');

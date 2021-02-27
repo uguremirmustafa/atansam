@@ -32,8 +32,6 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { email, values } = req.body;
-    const derece = values.derece;
-
     const user = await User.findOneAndUpdate({ email: email }, { sinavSiralamasi: values.derece });
     res.status(200).json({
       success: true,
