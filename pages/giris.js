@@ -19,7 +19,7 @@ export default function SignIn({ providers }) {
                 onClick={
                   () =>
                     signIn(provider.id, {
-                      callbackUrl: 'https://atansam-okuloncesi.vercel.app/profile',
+                      callbackUrl: 'https://atansam.online/profile',
                     })
                   // signIn(provider.id, { callbackUrl: 'http://localhost:3000/profile' })
                 }
