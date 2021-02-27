@@ -45,6 +45,7 @@ const ModalForm = ({ id, userId, okulAdi }) => {
           placeholder="tercih sırası"
           min="1"
           max="40"
+          required="true"
         />
         <span className="text-xs">tercih sırası 1 ile 40 arasinda olabilir</span>
         <button type="submit" className="bg-blue-400 py-2 px-4 rounded my-2 font-bold text-white">
