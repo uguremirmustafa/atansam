@@ -13,18 +13,18 @@ export default function SearchBox() {
   };
 
   return (
-    <div className="fixed top-20 sm:top-2">
+    <div className="fixed top-12 md:top-3 w-full md:w-56 flex justify-center bg-white mt-4 pb-4 md:mt-0 md:p-0 md:bg-transparent shadow-md md:shadow-none z-index-0">
       <form onSubmit={onSubmit} className="flex flex-start shadow-md">
         <input
           type="text"
           value={searchTerm}
           placeholder="Okul adıyla ara..."
           onChange={changeHandler}
-          className="h-12 px-4 bg-blue-200 font-normal text-black outline-none rounded-l  sm:w-56 md:w-56 active:bg-blue-50 focus:bg-blue-50"
+          className="h-10 px-4 bg-blue-200 font-normal text-black outline-none rounded-l  sm:w-56 md:w-56 active:bg-blue-50 focus:bg-blue-50"
         />
         <button
           type="submit"
-          className="h-12 px-4 text-white bg-blue-400 font-bold rounded-r hover:bg-blue-500"
+          className="h-10 px-4 text-white bg-blue-400 font-bold rounded-r hover:bg-blue-500"
         >
           <FaSearch />
         </button>

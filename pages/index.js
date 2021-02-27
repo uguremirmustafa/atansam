@@ -5,14 +5,35 @@ import Link from 'next/link';
 const Index = () => {
   const [session, loading] = useSession();
   return (
-    <div className="py-10 flex flex-col justify-center">
-      <div className=" font-extrabold  mb-20">
-        <p className="text-5xl mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 pb-6">
+    <div className="py-6 flex flex-col justify-center">
+      <div className="mb-10">
+        <p className="font-extrabold text-5xl mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-500 pb-6">
           Keşke Atansam
         </p>
-        <p className="italic  text-center pb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+        <p className="italic font-bold text-center pb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-400">
           okul öncesi için kpss atama simülasyonu
         </p>
+        <div className="flex justify-center items-center">
+          {loading && (
+            <div>
+              <Loading />
+            </div>
+          )}
+          {!loading && !session ? (
+            <button
+              className="mx-auto py-2 px-4 bg-yellow-500 text-white rounded-full w-40 my-4 font-bold"
+              onClick={() => signIn()}
+            >
+              Giriş Yap
+            </button>
+          ) : (
+            <Link href="/schools">
+              <button className="mx-auto py-2 px-4 bg-blue-500 text-white rounded-full w-40 my-4 font-bold">
+                Tercih Yap
+              </button>
+            </Link>
+          )}
+        </div>
         <p className="text-md font-normal mt-4 bg-white rounded m-2 shadow-lg overflow-hidden p-4">
           Bu uygulama{' '}
           <a href="https://prepokul.com" className="text-blue-400 font-bold" target="_blank">
@@ -82,25 +103,6 @@ const Index = () => {
           </ul>
         </div>
       </div>
-      {loading && (
-        <div>
-          <Loading />
-        </div>
-      )}
-      {!loading && !session ? (
-        <button
-          className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-40 mb-20 font-bold"
-          onClick={() => signIn()}
-        >
-          Giriş Yap
-        </button>
-      ) : (
-        <Link href="/schools">
-          <button className="mx-auto py-2 px-4 bg-green-500 text-white rounded-full w-40 mb-20 font-bold">
-            Tercih Yap
-          </button>
-        </Link>
-      )}
     </div>
   );
 };

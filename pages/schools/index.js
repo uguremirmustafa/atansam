@@ -72,7 +72,7 @@ function schools() {
             ref={loadMoreButtonRef}
             onClick={() => fetchNextPage()}
             disabled={!hasNextPage || isFetchingNextPage}
-            className="p-2 bg-blue-400 font-bold text-white mb-20 mt-2 rounded font-bold"
+            className="p-2 bg-blue-400 font-bold text-white mb-16 shadow-md mt-8 rounded font-bold"
           >
             {isFetchingNextPage
               ? 'Yükleniyor...'

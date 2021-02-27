@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
+import Logo from '@components/Logo';
 
 function Navbar() {
   const [session, loading] = useSession();
@@ -11,11 +12,11 @@ function Navbar() {
     return r === router.pathname;
   };
   return (
-    <nav className="bg-white shadow-sm p-4 font-bold fixed w-full">
-      <div className="max-w-4xl mx-auto flex justify-between flex-row">
+    <nav className="bg-white shadow-sm h-16 font-bold fixed w-full flex z-index-20 px-4">
+      <div className="max-w-4xl mx-auto flex justify-between flex-column items-center w-full">
         <Link href="/">
           <div className="logo cursor-pointer py-2 flex items-center">
-            <img src="logo.png" alt="logo" className="h-6 rounded mr-2" />
+            <Logo />
             <p className={`${isActive('/') ? 'underline' : ''} hidden md:flex`}>Atansam</p>
           </div>
         </Link>
@@ -50,7 +51,7 @@ function Navbar() {
             <div className="inline">
               {!session && (
                 <Link href="/giris">
-                  <div className="py-2 px-4 bg-green-500 text-white rounded-full cursor-pointer">
+                  <div className="py-2 px-4 bg-yellow-500 text-white rounded-full cursor-pointer">
                     Giriş
                   </div>
                 </Link>
