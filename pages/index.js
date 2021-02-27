@@ -22,7 +22,11 @@ const Index = () => {
           Okul öncesi eğitime dair kaliteli içeriklerin üretildiği bu sayfada yakın zamanda siz
           değerli öğretmenlerimizin yazılarını ve etkinliklerini de yayınlamaya başlayacağız.
           <br />
-          <a href="https://instagram.com/prepokul" className="text-blue-400 font-bold">
+          <a
+            href="https://instagram.com/prepokul"
+            target="_blank"
+            className="text-blue-400 font-bold"
+          >
             Instagram hesabını
           </a>{' '}
           takip ederek destek olabilir bizleri mutlu edebilirsiniz.
@@ -64,7 +68,11 @@ const Index = () => {
             </li>
             <li className="px-4 py-2 border-b-2 text-left hover:bg-blue-100 cursor-pointer">
               Uygulama ile ilgili talepleriniz ve düşünceleriniz için her zaman{' '}
-              <a href="https://instagram.com/uguremirmustafa" className="text-blue-400 font-bold">
+              <a
+                href="https://instagram.com/uguremirmustafa"
+                target="_blank"
+                className="text-blue-400 font-bold"
+              >
                 bana ulaşabilirsiniz.
               </a>
             </li>
