@@ -19,6 +19,26 @@ const reducers = (state, action) => {
         ...state,
         searchTerm: action.payload,
       };
+    case ACTIONS.SET_PROVINCE:
+      return {
+        ...state,
+        province: action.payload,
+      };
+    case ACTIONS.SET_CITY:
+      return {
+        ...state,
+        city: action.payload,
+      };
+    case ACTIONS.SET_CLICKED:
+      return {
+        ...state,
+        clicked: action.payload,
+      };
+    case ACTIONS.SET_IL:
+      return {
+        ...state,
+        il: action.payload,
+      };
     case ACTIONS.OPEN_MODAL:
       return {
         ...state,

@@ -7,14 +7,14 @@ import Logo from '@components/Logo';
 function Navbar() {
   const [session, loading] = useSession();
   const router = useRouter();
-
+  const { pathname } = router;
   const isActive = (r) => {
     return r === router.pathname;
   };
   return (
     <nav className="bg-white shadow-sm h-16 font-bold fixed w-full flex z-index-20 px-4">
       <div className="max-w-4xl mx-auto flex justify-between flex-column items-center w-full">
-        <Link href="/">
+        <Link href="/" shallow={true}>
           <div className="logo cursor-pointer py-2 flex items-center">
             <Logo />
             <p className={`${isActive('/') ? 'underline' : ''} hidden md:flex`}>Atansam</p>
@@ -22,7 +22,7 @@ function Navbar() {
         </Link>
         <div className="flex">
           {session && (
-            <Link scroll={false} href="/schools">
+            <Link scroll={false} href="/schools" shallow={true}>
               <div
                 className={`${
                   isActive('/schools') ? 'underline' : ''
@@ -32,8 +32,9 @@ function Navbar() {
               </div>
             </Link>
           )}
+
           {session && (
-            <Link scroll={false} href="/profile">
+            <Link scroll={false} href="/profile" shallow={true}>
               <div
                 className={`${
                   isActive('/profile') ? 'underline' : ''

@@ -19,13 +19,64 @@ export default async function (req, res) {
 }
 const getSchools = async (req, res) => {
   try {
-    let { page, perPage, search } = req.query;
-    console.log(search);
-    const options = {
-      page: parseInt(page),
-      limit: parseInt(perPage),
-    };
-    const schools = await School.paginate({ name: { $regex: search, $options: 'i' } }, options);
+    let { il, ilce, search } = req.query;
+    let city = decodeURIComponent(il);
+    let province = decodeURIComponent(ilce);
+    let searchTerm = decodeURIComponent(search);
+    console.log(searchTerm);
+    if (city === 'hepsi' && province === 'hepsi' && searchTerm === ('' || undefined)) {
+      const schools = await School.find({}, 'name il ilce');
+      res.status(200).json({
+        success: true,
+        data: schools,
+      });
+      return;
+    }
+    if (city === 'hepsi' && province === 'hepsi' && searchTerm !== ('' || undefined)) {
+      const schools = await School.find(
+        { name: { $regex: searchTerm, $options: 'i' } },
+        'name il ilce'
+      );
+      res.status(200).json({
+        success: true,
+        data: schools,
+      });
+      return;
+    }
+    if (city !== 'hepsi' && province === 'hepsi' && searchTerm === ('' || undefined)) {
+      const schools = await School.find({
+        il: city,
+      });
+      res.status(200).json({
+        success: true,
+        data: schools,
+      });
+      return;
+    }
+    if (city !== 'hepsi' && province !== 'hepsi' && searchTerm !== ('' || undefined)) {
+      const schools = await School.find({
+        $and: [{ il: city }, { ilce: province }, { name: { $regex: searchTerm, $options: 'i' } }],
+      });
+      res.status(200).json({
+        success: true,
+        data: schools,
+      });
+      return;
+    }
+    if (city !== 'hepsi' && province === 'hepsi' && searchTerm !== ('' || undefined)) {
+      const schools = await School.find({
+        $and: [{ il: city }, { name: { $regex: searchTerm, $options: 'i' } }],
+      });
+      res.status(200).json({
+        success: true,
+        data: schools,
+      });
+      return;
+    }
+
+    const schools = await School.find({
+      $and: [{ il: city }, { ilce: province }],
+    });
     res.status(200).json({
       success: true,
       data: schools,

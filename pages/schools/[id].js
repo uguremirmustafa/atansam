@@ -44,9 +44,9 @@ function Okul() {
           <Fetching />
           <BackToSchool />
           {/* <Adsense /> */}
-          <div className="p-4 bg-white rounded shadow-md text-center h-60">
+          <div className="p-4 bg-white rounded shadow-md text-center h-66">
             <Modal id={id} userId={userId} okulAdi={okulAdi} />
-            <div className="text-xl font-bold my-2 h-8">{school?.data.name}</div>
+            <div className="text-base font-bold my-2 h-16">{school?.data.name}</div>
             <div className="h-6">{school?.data.il}</div>
             <div className="h-6">{school?.data.ilce}</div>
             {user?.data.sinavSiralamasi && (
@@ -57,7 +57,7 @@ function Okul() {
             ) : (
               <div className="flex justify-center mt-4">
                 <button
-                  className="bg-blue-400 p-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white flex items-center text-sm md:text-base"
+                  className="bg-blue-400 px-3 m-2 rounded shadow-md cursor-pointer hover:shadow-lg font-bold text-white flex items-center text-sm md:text-base"
                   onClick={() => {
                     dispatch({ type: 'OPEN_MODAL', payload: true });
                   }}

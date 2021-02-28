@@ -12,6 +12,7 @@ export default function useSchools(searchTerm) {
     },
     {
       getNextPageParam: (lastPage) => lastPage.data.nextPage ?? false,
+      keepPreviousData: true,
     }
   );
 }

@@ -8,7 +8,7 @@ function Layout({ children }) {
     <div className="bg-gradient-to-b from-blue-50 to-purple-50 min-h-screen">
       <Navbar />
       <main className="max-w-4xl mx-auto pt-16">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

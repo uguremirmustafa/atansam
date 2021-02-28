@@ -22,7 +22,8 @@
     "react-icons": "^4.2.0",
     "react-query": "^3.9.8",
     "react-virtualized": "^9.22.3",
-    "swr": "0.4.2"
+    "swr": "0.4.2",
+    "turkey-map-react": "^1.0.3"
   },
   "license": "MIT",
   "devDependencies": {

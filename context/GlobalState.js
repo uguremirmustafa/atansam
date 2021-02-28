@@ -4,11 +4,13 @@ export const AppContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const initialState = {
-    users: ['user1', 'user2'],
-    darkTheme: true,
     tercihler: [],
-    searchTerm: '',
     modalOpen: false,
+    searchTerm: '',
+    province: '',
+    city: '',
+    clicked: false,
+    il: '',
   };
   const [state, dispatch] = useReducer(reducers, initialState);
 
